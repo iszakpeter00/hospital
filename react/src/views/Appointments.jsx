@@ -70,18 +70,18 @@ export default function Appointments() {
         <div>
 
             <PageComponent
-                title="Időpontok"
+                title="Appointments"
                 buttons={(
                     <TButton color="green" to="/appointments/create">
                         <PlusCircleIcon className="h-5 w-5 mr-2" />
-                        Időpontfoglalás
+                        Book an appointment
                     </TButton>
 
                 )}>
 
                 {deleteConfirm &&
                     <DeleteConfirm
-                        title="Biztosan törölni szeretné a foglalást?"
+                        title="Are you sure you want to cancel your reservation?"
                         onDelete={() => onDelete(reservationId)}
                         onCancel={() => setDeleteConfirm(false)}
                     />
@@ -93,16 +93,19 @@ export default function Appointments() {
                             <thead className="text-s uppercase bg-gray-50 dark:bg-gray-500 dark:text-white">
                                 <tr>
                                     <th scope="col" className="px-6 py-3">
-                                        Szolgáltatás
+                                        Service
                                     </th>
                                     <th scope="col" className="px-6 py-3">
-                                        Szakdolgozó
+                                        Employee
                                     </th>
                                     <th scope="col" className="px-6 py-3">
-                                        Dátum
+                                        Date
                                     </th>
                                     <th scope="col" className="px-6 py-3">
-                                        Időtartam
+                                        Duration
+                                    </th>
+                                    <th scope="col" className="px-6 py-3">
+                                        Price
                                     </th>
                                     <th scope="col" className="px-6 py-3">
 
@@ -122,7 +125,10 @@ export default function Appointments() {
                                             {reservation.appointment.date.replaceAll(" ", ". ").replaceAll("-", ". ").substring(0, 19)}
                                         </td>
                                         <td className="px-6 py-4">
-                                            {reservation.appointment.service.length} perc
+                                            {reservation.appointment.service.length} min.
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            {reservation.appointment.service.price} $
                                         </td>
                                         <td className="flex flex-row gap-2 px-6 py-4">
                                             <TButton
@@ -134,7 +140,7 @@ export default function Appointments() {
                                                 }
                                             >
                                                 <XCircleIcon className="h-6 w-6 mr-2" />
-                                                Lemondás
+                                                Cancel
                                             </TButton>
                                         </td>
                                     </tr>
@@ -143,7 +149,7 @@ export default function Appointments() {
                             </tbody>
                         </table>
                     </div>
-                ) : (loading ? 'Betöltés...' : 'Önnek még nincs foglalt időpontja.')
+                ) : (loading ? 'Loading...' : 'You do not have an appointment yet.')
                 }
 
             </PageComponent>

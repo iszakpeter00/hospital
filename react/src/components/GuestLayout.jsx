@@ -18,7 +18,7 @@ export default function GuestLayout() {
                         <img
                             className="mx-auto h-20 w-auto"
                             src={Logo}
-                            alt="Egészségügyi Központ Logo"
+                            alt="Hospital"
                         />
                     </div>
                     <Outlet />

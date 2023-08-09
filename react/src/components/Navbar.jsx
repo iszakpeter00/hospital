@@ -34,11 +34,11 @@ const Navbar = () => {
                         : (<FaBars size={30} style={{ color: '#ffffff' }} />)}
                 </div>
                 <div className={click ? "nav-menu active" : "nav-menu"}>
-                    <Link className='nav-item' activeClass='current' to="home" spy={true} smooth={true} offset={0} duration={700} onClick={closeMenu}>Kezdőlap</Link>
-                    <Link className='nav-item' activeClass='current' to="about" spy={true} smooth={true} offset={20} duration={700} onClick={closeMenu}>Rólunk</Link>
-                    <Link className='nav-item' activeClass='current' to="services" spy={true} smooth={true} offset={20} duration={700} onClick={closeMenu}>Szolgáltatások</Link>
-                    <Link className='nav-item' activeClass='current' to="contact" spy={true} smooth={true} offset={20} duration={700} onClick={closeMenu}>Kapcsolat</Link>
-                    <a className='nav-item' href="/login" onClick={closeMenu}>Időpontfoglalás</a>
+                    <Link className='nav-item' activeClass='current' to="home" spy={true} smooth={true} offset={0} duration={700} onClick={closeMenu}>Home</Link>
+                    <Link className='nav-item' activeClass='current' to="about" spy={true} smooth={true} offset={20} duration={700} onClick={closeMenu}>About</Link>
+                    <Link className='nav-item' activeClass='current' to="services" spy={true} smooth={true} offset={20} duration={700} onClick={closeMenu}>Services</Link>
+                    <Link className='nav-item' activeClass='current' to="contact" spy={true} smooth={true} offset={20} duration={700} onClick={closeMenu}>Contact</Link>
+                    <a className='nav-item' href="/login" onClick={closeMenu}>Booking</a>
                 </div>
             </nav>
         </div>

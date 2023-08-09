@@ -9,9 +9,9 @@ import axiosClient from '../axios'
 import Toast from './Toast'
 
 const navigation = [
-    { name: 'Időpontok', to: '/admin/appointments' },
-    { name: 'Dolgozók', to: '/admin/employees' },
-    { name: 'Szolgáltatások', to: '/admin/services' },
+    { name: 'Appointments', to: '/admin/appointments' },
+    { name: 'Employees', to: '/admin/employees' },
+    { name: 'Services', to: '/admin/services' },
 ]
 
 function classNames(...classes) {
@@ -56,7 +56,7 @@ export default function AdminLayout() {
                                             <img
                                                 className="h-8 w-8"
                                                 src={Logo}
-                                                alt="Your Company"
+                                                alt="Hospital logo"
                                             />
                                         </div>
                                         <div className="hidden md:block">
@@ -80,12 +80,12 @@ export default function AdminLayout() {
                                     </div>
                                     <div className="hidden md:block">
                                         <div className="ml-4 flex items-center md:ml-6">
-                                            {/* Legördülő menü */}
+                                            {/* Dropdown menu */}
 
                                             <Menu as="div" className="relative ml-3">
 
                                                 <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800">
-                                                    <span className="sr-only">Felhasználói menü</span>
+                                                    <span className="sr-only">User menu</span>
                                                     <div className="text-lg font-medium leading-none text-white mr-2">{getCurrentUser().name}</div>
                                                     <UserIcon className='w-8 text-white bg-gray rounded-full' />
                                                 </Menu.Button>
@@ -106,7 +106,7 @@ export default function AdminLayout() {
                                                                 onClick={(evt) => logout(evt)}
                                                                 className='block px-4 py-3 text-base text-gray-700'
                                                             >
-                                                                Kijelentkezés
+                                                                Sign out
                                                             </a>
                                                         </Menu.Item>
                                                     </Menu.Items>
@@ -117,7 +117,7 @@ export default function AdminLayout() {
                                     <div className="-mr-2 flex md:hidden">
                                         {/* Mobile menu button */}
                                         <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                                            <span className="sr-only">Főmenü</span>
+                                            <span className="sr-only">Main menu</span>
                                             {open ? (
                                                 <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
                                             ) : (
@@ -161,7 +161,7 @@ export default function AdminLayout() {
                                             onClick={(evt) => logout(evt)}
                                             className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
                                         >
-                                            Kijelentkezés
+                                            Sign out
                                         </Disclosure.Button>
                                     </div>
                                 </div>

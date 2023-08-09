@@ -33,8 +33,24 @@ export default function Login() {
     return (
         <>
             <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900 normal-case">
-                Bejelentkezés
+                Sign in
             </h2>
+
+            <div className="">
+                <p className="mt-2 text-center text-sm font-semibold text-gray-600">
+                    NOTE: The website is for testing purposes only.
+                    <br />
+                    May contain Hungarian text.
+                </p>
+                <p className="mt-4 text-center text-sm text-gray-600">
+                    Admin credentials:
+                    <br className="mb-2"/>
+                    E-mail: admin@admin.com
+                    <br />
+                    Password: Admin123
+                </p>
+
+            </div>
 
             {error.__html && (
                 <div className="bg-red-500 rounded py-2 px-3 text-white" dangerouslySetInnerHTML={error}></div>
@@ -45,7 +61,7 @@ export default function Login() {
                 <div className="rounded-md shadow-sm">
                     <div>
                         <label htmlFor="email-address" className="sr-only">
-                            E-mail
+                            E-mail address
                         </label>
                         <input
                             id="email-address"
@@ -56,12 +72,12 @@ export default function Login() {
                             value={email}
                             onChange={(ev) => setEmail(ev.target.value)}
                             className="my-0 relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-green-500 focus:outline-none focus:ring-green-500 sm:text-sm"
-                            placeholder="E-mail cím"
+                            placeholder="E-mail address"
                         />
                     </div>
                     <div>
                         <label htmlFor="password" className="sr-only">
-                            Jelszó
+                            Password
                         </label>
                         <input
                             id="password"
@@ -72,7 +88,7 @@ export default function Login() {
                             value={password}
                             onChange={(ev) => setPassword(ev.target.value)}
                             className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-green-500 focus:outline-none focus:ring-green-500 sm:text-sm"
-                            placeholder="Jelszó"
+                            placeholder="Password"
                         />
                     </div>
                 </div>
@@ -88,17 +104,17 @@ export default function Login() {
                                 aria-hidden="true"
                             />
                         </span>
-                        Belépés
+                        Sign in
                     </button>
                 </div>
 
                 <p className="mt-2 text-center text-sm text-gray-600">
-                    Nincs még fiókja?{" "}
+                    {"Don't have an account yet? "}
                     <Link
                         to="/signup"
                         className="font-medium text-green-600 hover:text-green-500 px-0"
                     >
-                        Regisztráció
+                        Sign up
                     </Link>
                 </p>
 
@@ -107,7 +123,7 @@ export default function Login() {
                         to="/"
                         className="font-medium text-green-600 hover:text-green-500"
                     >
-                        Vissza a főoldalra
+                        Back to the homepage
                     </Link>
                 </p>
 

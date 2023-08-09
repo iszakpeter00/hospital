@@ -21,20 +21,28 @@ export default function Signup() {
     const onSubmit = (evt) => {
         evt.preventDefault();
 
+        let errors = "";
+        let failed = false;
+
         setError({ __html: "" });
 
-        if(fullName.includes(" ") === false) {
-            setError({ __html: "Kérem adja meg a teljes nevét!" });
-            return;
+        if (fullName.includes(" ") === false) {
+            errors += "Please enter your full name!" + "<br>";
+            failed = true;
         }
 
-        if(password.length < 8) {
-            setError({ __html: "A jelszónak legalább 8 karakter hosszúnak kell lennie." });
-            return;
+        if (password.length < 8) {
+            errors += "The password must be at least 8 characters long." + "<br>";
+            failed = true;
         }
 
-        if(password !== passwordConfirmation) {
-            setError({ __html: "A megadott jelszavak nem egyeznek meg." });
+        if (password !== passwordConfirmation) {
+            errors += "The passwords entered do not match." + "<br>";
+            failed = true;
+        }
+
+        if (failed) {
+            setError({ __html: errors });
             return;
         }
 
@@ -69,7 +77,7 @@ export default function Signup() {
     return (
         <>
             <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900 normal-case">
-                Fiók létrehozása
+                Create an account
             </h2>
 
             {error.__html && (<div className="bg-red-500 rounded py-2 px-3 text-white text-base" dangerouslySetInnerHTML={error}>
@@ -85,7 +93,7 @@ export default function Signup() {
                 <div className="-space-y-px rounded-md">
                     <div className="flex flex-row items-center">
                         <label htmlFor="full-name" className="text-sm w-40">
-                            Teljes név:
+                            Full name:
                         </label>
                         <input
                             id="full-name"
@@ -99,7 +107,7 @@ export default function Signup() {
                     </div>
                     <div className="flex flex-row items-center">
                         <label htmlFor="email" className="text-sm w-40">
-                            E-mail cím:
+                            E-mail address:
                         </label>
                         <input
                             id="email"
@@ -114,7 +122,7 @@ export default function Signup() {
                     </div>
                     <div className="flex flex-row items-center">
                         <label htmlFor="password" className="text-sm w-40">
-                            Jelszó:
+                            Password:
                         </label>
                         <input
                             id="password"
@@ -129,7 +137,7 @@ export default function Signup() {
                     </div>
                     <div className="flex flex-row items-center">
                         <label htmlFor="password" className="text-sm w-40">
-                            Jelszó újra:
+                            Password confirmation:
                         </label>
                         <input
                             id="password-confirmation"
@@ -143,7 +151,7 @@ export default function Signup() {
                     </div>
                     <div className="flex flex-row items-center">
                         <label htmlFor="born" className="text-sm w-40">
-                            Születési dátum:
+                            Date of birth:
                         </label>
                         <input
                             id="born"
@@ -157,7 +165,7 @@ export default function Signup() {
                     </div>
                     <div className="flex flex-row items-center">
                         <label htmlFor="zip_code" className="text-sm w-40">
-                            Irányítószám:
+                            Postal code:
                         </label>
                         <input
                             id="zip_code"
@@ -171,7 +179,7 @@ export default function Signup() {
                     </div>
                     <div className="flex flex-row items-center">
                         <label htmlFor="city" className="text-sm w-40">
-                            Város:
+                            City:
                         </label>
                         <input
                             id="city"
@@ -185,7 +193,7 @@ export default function Signup() {
                     </div>
                     <div className="flex flex-row items-center">
                         <label htmlFor="address" className="text-sm w-40">
-                            Utca, házszám:
+                            Address:
                         </label>
                         <input
                             id="address"
@@ -199,7 +207,7 @@ export default function Signup() {
                     </div>
                     <div className="flex flex-row items-center">
                         <label htmlFor="phone_number" className="text-sm w-40">
-                            Telefonszám:
+                            Phone number:
                         </label>
                         <input
                             id="phone_number"
@@ -213,7 +221,7 @@ export default function Signup() {
                     </div>
                     <div className="flex flex-row items-center">
                         <label htmlFor="password" className="text-sm w-40">
-                            TAJ-szám:
+                            Social security number:
                         </label>
                         <input
                             id="insurance_number"
@@ -238,17 +246,17 @@ export default function Signup() {
                                 aria-hidden="true"
                             />
                         </span>
-                        Regisztráció
+                        Sign up
                     </button>
                 </div>
 
                 <p className="text-center text-sm text-gray-600">
-                    Van már fiókja?{" "}
+                    Already have an account?{" "}
                     <Link
                         to="/login"
                         className="font-medium text-green-600 hover:text-green-500 px-0"
                     >
-                        Belépés
+                        Sign in
                     </Link>
                 </p>
 
@@ -257,7 +265,7 @@ export default function Signup() {
                         to="/"
                         className="font-medium text-green-600 hover:text-green-500 my-0 py-0"
                     >
-                        Vissza a főoldalra
+                        Back to the homepage
                     </Link>
                 </p>
 

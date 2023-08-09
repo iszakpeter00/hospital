@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ServiceRequest;
 use Illuminate\Http\Request;
 use App\Models\Service;
 
@@ -24,9 +25,9 @@ class ServiceController extends Controller
      * @param  \App\Http\Requests\ServiceRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) //TODO: ServiceRequest
+    public function store(ServiceRequest $request)
     {
-        $data = $request->all(); //TODO: validate
+        $data = $request->validated();
         Service::create($data);
     }
 

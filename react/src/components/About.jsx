@@ -7,15 +7,15 @@ const About = () => {
     return (
         <div className='about' id='about'>
             <div className='container'>
-                <img src={logos} alt='Rólunk' />
+                <img src={logos} alt='About us' />
                 <div className='col-2'>
-                    <h1 className='font-bold'>Rólunk</h1>
+                    <h1 className='font-bold'>About us</h1>
                     <span className='line'></span>
-                    <p>Célunk, hogy segítsünk Önnek megőrizni egészségét, javítani fizikai és mentális állapotát és megfelelő orvosi ellátást biztosítani az esetleges betegségek esetén.</p>
-                    <p className='secondary'>Szakdolgozói csapatunk nagy figyelmet fordít arra, hogy minden betegünket az egyéni igényeknek megfelelően kezeljük, és széles skálájú egészségügyi szolgáltatásokat kínáljunk.
-                        Az általunk nyújtott szolgáltatások közé tartoznak a szakorvosi rendelések, laboratóriumi vizsgálatok, diagnosztikai képalkotó eljárások és rehabilitációs programok.</p>
+                    <p>Our goal is to help you maintain your health, improve your physical and mental condition, and provide you with appropriate medical care in case of possible illnesses.</p>
+                    <p className='secondary'>Our team of professionals pays great attention to treating each of our patients according to their individual needs and offering a wide range of health services.
+The services we provide include specialist appointments, laboratory tests, diagnostic imaging procedures and rehabilitation programs.</p>
                     <div className='button'>
-                        <a href='/login'>Foglaljon időpontot</a>
+                        <a href='/login'>Make an appointment</a>
                     </div>
                 </div>
 

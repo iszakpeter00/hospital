@@ -17,13 +17,13 @@ export default function DeleteConfirm({
                         onClick={onDelete}
                     >
                         <XCircleIcon className="h-6 w-6 mr-2" />
-                        Törlés
+                        Delete
                     </TButton>
                     <TButton
                         color="edit"
                         onClick={onCancel}
                     >
-                        Mégse
+                        Cancel
                     </TButton>
                 </div>
             </div>

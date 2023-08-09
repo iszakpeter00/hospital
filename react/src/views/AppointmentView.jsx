@@ -110,19 +110,19 @@ export default function AppointmentView() {
 
 
     return (
-        <PageComponent title="Időpontfoglalás">
+        <PageComponent title="Book an appointment">
             <form action="#" method="post" onSubmit={onSubmit} className="px-4 py-4">
                 <div className="shadow sm:overflow-hidden sm:rounded-md">
                     {services && services.length > 0 ? (
                         <div className="px-4 py-4 bg-white space-y-6 sm:p-6">
 
-                            {/*Szolgáltatás*/}
+                            {/*Service*/}
                             <div className="col-span-6 sm:col-span-3 space-y-3">
                                 <label
                                     htmlFor="title"
                                     className="block text-sm font-bold text-gray-700"
                                 >
-                                    Szolgáltatás
+                                    Service
                                 </label>
                                 <select
                                     name="service"
@@ -142,26 +142,26 @@ export default function AppointmentView() {
                                 {(length && price) ? (
                                     <div className="flex flex-col gap-2 w-64">
                                         <div className="flex flex-row justify-between">
-                                            <p className="text-sm text-gray-700">Kezelés hossza:</p>
-                                            <p className="text-sm text-gray-700">{length} perc</p>
+                                            <p className="text-sm text-gray-700">Duration: </p>
+                                            <p className="text-sm text-gray-700">{length} min.</p>
                                         </div>
                                         <div className="flex flex-row justify-between">
-                                            <p className="text-sm text-gray-700">Ár:</p>
-                                            <p className="text-sm text-gray-700">{price} Ft</p>
+                                            <p className="text-sm text-gray-700">Price:</p>
+                                            <p className="text-sm text-gray-700">{price} $</p>
                                         </div>
                                     </div>
                                 ) : ''}
                             </div>
-                            {/*Szolgáltatások*/}
+                            {/*Service*/}
 
-                            {/*Időpontok*/}
+                            {/*Appointment*/}
                             {appointments && (
                                 <div className="col-span-6 sm:col-span-3 space-y-3">
                                     <label
                                         htmlFor="appointments"
                                         className="block text-sm font-bold text-gray-700"
                                     >
-                                        Időpont
+                                        Appointment
                                     </label>
                                     <select
                                         name="appointments"
@@ -186,22 +186,22 @@ export default function AppointmentView() {
                                     {employee ? (
                                         <div className="flex flex-col gap-3 w-64 mt-0">
                                             <div className="flex flex-row justify-between">
-                                                <p className="text-sm text-gray-700">Szakdolgozó:</p>
+                                                <p className="text-sm text-gray-700">Employee:</p>
                                                 <p className="text-sm text-gray-700">{employee}</p>
                                             </div>
                                         </div>
                                     ) : ''}
                                 </div>
                             )}
-                            {/*Időpontok*/}
+                            {/*Appointment*/}
 
                             <div className="flex gap-4 py-3">
-                                <TButton color="green">Foglalás</TButton>
-                                <TButton color="gray" onClick={() => navigate("/appointments")}>Mégse</TButton>
+                                <TButton color="green">Booking</TButton>
+                                <TButton color="gray" onClick={() => navigate("/appointments")}>Cancel</TButton>
                             </div>
 
                         </div>
-                    ) : 'Betöltés...'}
+                    ) : 'Loading...'}
                 </div>
             </form>
         </PageComponent>

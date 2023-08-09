@@ -43,7 +43,7 @@ export default function AdminAppointments() {
         axiosClient.delete(`/appointment/${id}`)
             .then(() => {
                 setDeleteConfirm(false);
-                showToast("Időpont sikeresen törölve");
+                showToast("Appointment deleted successfully.");
                 getAppointments();
             })
     }
@@ -55,17 +55,17 @@ export default function AdminAppointments() {
     return (
         <div>
             <PageComponent
-                title="Időpontok"
+                title="Appointments"
                 buttons={(
                     <TButton color="green" to="/admin/appointments/create">
                         <PlusCircleIcon className="h-6 w-6 mr-2" />
-                        Időpont hozzáadása
+                        Add new appointment
                     </TButton>
                 )}>
 
                 {deleteConfirm &&
                     <DeleteConfirm
-                        title="Biztosan törölni szeretné az időpontot?"
+                        title="Are you sure you want to delete the appointment?"
                         onDelete={() => onDelete(appointmentId)}
                         onCancel={() => setDeleteConfirm(false)}
                     />
@@ -77,16 +77,16 @@ export default function AdminAppointments() {
                             <thead className="text-s uppercase bg-gray-50 dark:bg-gray-500 dark:text-white">
                                 <tr>
                                     <th scope="col" className="px-6 py-3">
-                                        Dátum
+                                        Date
                                     </th>
                                     <th scope="col" className="px-6 py-3">
-                                        Szakdolgozó
+                                        Employee
                                     </th>
                                     <th scope="col" className="px-6 py-3">
-                                        Szolgáltatás
+                                        Service
                                     </th>
                                     <th scope="col" className="px-6 py-3">
-                                        Időtartam
+                                        Duration
                                     </th>
                                     <th scope="col" className="px-6 py-3">
 
@@ -106,7 +106,7 @@ export default function AdminAppointments() {
                                             {appointment.service.name}
                                         </td>
                                         <td className="px-6 py-4">
-                                            {appointment.service.length} perc
+                                            {appointment.service.length} min.
                                         </td>
                                         <td className="flex flex-row gap-2 px-6 py-4">
                                             <TButton
@@ -114,7 +114,7 @@ export default function AdminAppointments() {
                                                 to={`/admin/appointments/${appointment.id}`}
                                             >
                                                 <PencilSquareIcon className="h-6 w-6 mr-2" />
-                                                Szerkesztés
+                                                Edit
                                             </TButton>
                                             <TButton
                                                 color="delete"
@@ -125,7 +125,7 @@ export default function AdminAppointments() {
                                                 }
                                             >
                                                 <XCircleIcon className="h-6 w-6 mr-2" />
-                                                Törlés
+                                                Delete
                                             </TButton>
                                         </td>
                                     </tr>
@@ -134,7 +134,7 @@ export default function AdminAppointments() {
                             </tbody>
                         </table>
                     </div>
-                ) : (loading ? 'Betöltés...' : 'Nincs időpont az adatbázisban.')
+                ) : (loading ? 'Loading...' : 'There is no appointment in the database.')
                 }
 
             </PageComponent>

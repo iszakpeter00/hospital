@@ -17,16 +17,16 @@ const Contact = () => {
             send = false;
             e.preventDefault();
             setDisabled(true);
-            setMessage("Küldés folyamatban...");
+            setMessage("Sending message...");
 
             emailjs.sendForm('service_nx2twmi', 'template_hytr6tr', form.current, '7RvRiJyTmfqCFnocI')
                 .then(() => {
-                    setMessage("Köszönjük megkeresését,\nhamarosan válaszolunk Önnek!");
+                    setMessage("Thank you for your inquiry, we will reply to you soon!");
                     setDisabled(false);
                     send = true;
                 }, (error) => {
                     console.log(error.text);
-                    setMessage("A küldés során hiba történt. Kérjük, próbálja meg később, vagy vegye fel velünk a kapcsolatot telefonon vagy e-mailben!");
+                    setMessage("An error occurred while sending. Please try again later or contact us by phone or email!");
                     setDisabled(false);
                     send = true;
                 });
@@ -37,20 +37,20 @@ const Contact = () => {
         <div className='contact' id='contact'>
             <div className='background'>
                 <div className="content">
-                    <h1 className='font-bold'>Kapcsolat</h1>
+                    <h1 className='font-bold'>Contact</h1>
                     <span className='line'></span>
-                    <p>Információt kérne szolgáltatásainkkal kapcsolatban?</p>
-                    <p>Nem tudja, melyik kezelést vegye igénybe?</p>
-                    <p>Vegye fel velünk a kapcsolatot!</p>
+                    <p>Would you like information about our services?</p>
+                    <p>Not sure which treatment to choose?</p>
+                    <p>Contact us!</p>
 
                     <form ref={form} onSubmit={sendEmail}>
-                        <label>Név</label>
-                        <input className="bg-gray-100" type="text" name="name" placeholder="Név" required />
-                        <label>E-mail cím</label>
-                        <input className="bg-gray-100" type="text" name="email" placeholder="E-mail cím" required />
-                        <label>Üzenet</label>
-                        <textarea className="bg-gray-100" name="message" placeholder="Üzenet" required></textarea>
-                        <input disabled={disabled} className="button mb-0" type="submit" value="Küldés" />
+                        <label>Name</label>
+                        <input className="bg-gray-100" type="text" name="name" placeholder="Name" required />
+                        <label>E-mail address</label>
+                        <input className="bg-gray-100" type="text" name="email" placeholder="E-mail address" required />
+                        <label>Message</label>
+                        <textarea className="bg-gray-100" name="message" placeholder="Message" required></textarea>
+                        <input disabled={disabled} className="button mb-0" type="submit" value="Send" />
                         {message ?
                             <span className='text-center mt-5 font-semibold'>
                                 {message}
@@ -58,7 +58,7 @@ const Contact = () => {
                         }
                     </form>
 
-                    <p className='mb-3'>További elérhetőségeink:</p>
+                    <p className='mb-3'>Contact details:</p>
                     <div className='info'>
                         <div>
                             <FontAwesomeIcon icon={faEnvelope} />

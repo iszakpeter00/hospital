@@ -8,9 +8,10 @@ import { useParams, useNavigate } from "react-router-dom";
 export default function AdminCreateService() {
 
     const [name, setName] = useState("");
-    const [length, setLength] = useState(0);
-    const [price, setPrice] = useState(0);
+    const [length, setLength] = useState(30);
+    const [price, setPrice] = useState(10000);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
     const { id } = useParams();
 
     const navigate = useNavigate();
@@ -39,9 +40,9 @@ export default function AdminCreateService() {
         res.then(() => {
             navigate("/admin/services");
             if (id) {
-                showToast("Szolgáltatás sikeresen módosítva");
+                showToast("Service edited successfully.");
             } else {
-                showToast("Szolgáltatás sikeresen létrehozva");
+                showToast("Service created successfully.");
             }
         }).catch((err) => {
             if (err && err.response) {
@@ -71,19 +72,24 @@ export default function AdminCreateService() {
     }, []);
 
     return (
-        <PageComponent title={id ? "Szolgáltatás módosítása" : "Szolgáltatás hozzáadása"}>
+        <PageComponent title={id ? "Edit service" : "Add new service"}>
             <form action="#" method="post" onSubmit={onSubmit} className="px-4 py-4">
+                {error &&
+                    <div className="bg-red-100 border border-red-400 text-red-700 text-lg px-4 py-3 rounded relative" role="alert">
+                        {error}
+                    </div>
+                }
                 {!loading ? (
                     <div className="shadow sm:overflow-hidden sm:rounded-md">
                         <div className="px-4 py-4 bg-white space-y-6 sm:p-6">
 
-                            {/*Név*/}
+                            {/*Name*/}
                             <div className="col-span-6 sm:col-span-3 space-y-3">
                                 <label
                                     htmlFor="title"
                                     className="block text-sm font-bold text-gray-700"
                                 >
-                                    Név
+                                    Name
                                 </label>
                                 <input
                                     type="text"
@@ -92,19 +98,19 @@ export default function AdminCreateService() {
                                     className="mt-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     onChange={(evt) => setName(evt.target.value)}
                                     value={name ? name : ""}
-                                    placeholder="Szolgáltatás neve"
+                                    placeholder="Name of service"
                                     required
                                 />
                             </div>
-                            {/*Név*/}
+                            {/*Name*/}
 
-                            {/*Hossz*/}
+                            {/*Duration*/}
                             <div className="col-span-6 sm:col-span-3 space-y-3">
                                 <label
                                     htmlFor="title"
                                     className="block text-sm font-bold text-gray-700"
                                 >
-                                    Hossz (perc)
+                                    Duration (min.)
                                 </label>
                                 <input
                                     type="number"
@@ -118,38 +124,38 @@ export default function AdminCreateService() {
                                     required
                                 />
                             </div>
-                            {/*Hossz*/}
+                            {/*Duration*/}
 
-                            {/*Ár*/}
+                            {/*Price*/}
                             <div className="space-y-3">
                                 <label
                                     htmlFor="title"
                                     className="block text-sm font-bold text-gray-700"
                                 >
-                                    Ár (Ft)
+                                    Price ($)
                                 </label>
                                 <input
                                     type="number"
                                     min={0}
-                                    step={100}
+                                    step={5}
                                     name="price"
                                     id="price"
                                     className="mt-3 w-36 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                     onChange={(evt) => setPrice(evt.target.value)}
-                                    value={price ? price : 10000}
+                                    value={price ? price : 100}
                                     required
                                 />
                             </div>
                             {/*Ár*/}
 
                             <div className="flex gap-4 py-3">
-                                <TButton color="green">Mentés</TButton>
-                                <TButton color="gray" onClick={() => navigate("/admin/services")}>Mégse</TButton>
+                                <TButton color="green">Save</TButton>
+                                <TButton color="gray" onClick={() => navigate("/admin/services")}>Cancel</TButton>
                             </div>
 
                         </div>
                     </div>
-                ) : "Betöltés..." }
+                ) : "Loading..."}
             </form>
         </PageComponent>
     )

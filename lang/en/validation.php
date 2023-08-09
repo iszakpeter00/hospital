@@ -137,7 +137,7 @@ return [
     'starts_with' => 'The :attribute must start with one of the following: :values.',
     'string' => 'The :attribute must be a string.',
     'timezone' => 'The :attribute must be a valid timezone.',
-    'unique' => 'Ez az e-mail cím már foglalt.',
+    'unique' => 'A megadott :attribute már foglalt.',
     'uploaded' => 'The :attribute failed to upload.',
     'uppercase' => 'The :attribute must be uppercase.',
     'url' => 'The :attribute must be a valid URL.',
@@ -171,6 +171,24 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'név',
+        'email' => 'e-mail cím',
+        'password' => 'jelszó',
+        'born' => 'születési dátum',
+        'city' => 'város',
+        'address' => 'cím',
+        'zip_code' => 'irányítószám',
+        'phone_number' => 'telefonszám',
+        'insurance_number' => 'TAJ szám',
+        'length' => 'hossz',
+        'price' => 'ár',
+        'service_id' => 'szolgáltatás',
+        'employee_id' => 'alkalmazott',
+        'date' => 'dátum',
+        'time' => 'időpont',
+        'service' => 'szolgáltatás',
+        'employee' => 'alkalmazott',
+    ],
 
 ];

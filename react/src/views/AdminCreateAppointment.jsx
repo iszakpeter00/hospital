@@ -44,9 +44,9 @@ export default function AdminCreateAppointment() {
                 console.log(res);
                 navigate("/admin/appointments");
                 if (id) {
-                    showToast("Időpont sikeresen módosítva");
+                    showToast("Appointment successfully changed.");
                 } else {
-                    showToast("Időpont sikeresen létrehozva");
+                    showToast("Appointment successfully created.");
                 }
             })
             .catch((err) => {
@@ -99,19 +99,19 @@ export default function AdminCreateAppointment() {
     }, []);
 
     return (
-        <PageComponent title={id ? "Időpont szerkesztése" : "Időpont hozzáadása"}>
+        <PageComponent title={id ? "Edit appointment" : "Add new appointment"}>
             <form action="#" method="post" onSubmit={onSubmit} className="px-4 py-4">
                 <div className="shadow sm:overflow-hidden sm:rounded-md">
                     {!loading ? (
                         <div className="px-4 py-4 bg-white space-y-6 sm:p-6">
 
-                            {/*Szolgáltatás*/}
+                            {/*Service*/}
                             <div className="col-span-6 sm:col-span-3 space-y-3">
                                 <label
                                     htmlFor="title"
                                     className="block text-sm font-bold text-gray-700"
                                 >
-                                    Szolgáltatás
+                                    Service
                                 </label>
                                 <select
                                     name="service"
@@ -130,15 +130,15 @@ export default function AdminCreateAppointment() {
 
                                 </select>
                             </div>
-                            {/*Szolgáltatás*/}
+                            {/*Service*/}
 
-                            {/*Dolgozó*/}
+                            {/*Employee*/}
                             <div className="col-span-6 sm:col-span-3 space-y-3">
                                 <label
                                     htmlFor="title"
                                     className="block text-sm font-bold text-gray-700"
                                 >
-                                    Szakdolgozó
+                                    Employee
                                 </label>
                                 <select
                                     name="employee"
@@ -157,15 +157,15 @@ export default function AdminCreateAppointment() {
 
                                 </select>
                             </div>
-                            {/*Dolgozó*/}
+                            {/*Employee*/}
 
-                            {/*Időpont*/}
+                            {/*Date*/}
                             <div className="col-span-6 sm:col-span-3 space-y-3">
                                 <label
                                     htmlFor="date"
                                     className="block text-sm font-bold text-gray-700"
                                 >
-                                    Időpont
+                                    Date
                                 </label>
 
                                 <div className="flex flex-row items-center justify-start gap-2">
@@ -190,7 +190,7 @@ export default function AdminCreateAppointment() {
                                                 console.log(date);
                                             }}
                                         />
-                                        {" óra"}
+                                        :
                                         <input
                                             type="number"
                                             name="minute"
@@ -198,20 +198,15 @@ export default function AdminCreateAppointment() {
                                             step={5}
                                             min={0}
                                             max={59}
-                                            value={
-                                                date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()
-                                            }
+                                            value={date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()}
                                             className="w-16 p-2 m-1 ml-6"
                                             onChange={(evt) => {
                                                 setDate(new Date(date.setMinutes(evt.target.value)));
-                                                console.log(date);
                                             }}
                                         />
-                                        {" perc"}
+
                                     </div>
                                 </div>
-
-
 
                                 {/* <input
                                     type="datetime-local"
@@ -222,15 +217,15 @@ export default function AdminCreateAppointment() {
                                 /> */}
 
                             </div>
-                            {/*Időpont*/}
+                            {/*Date*/}
 
                             <div className="flex gap-4 py-3">
-                                <TButton color="green">Mentés</TButton>
-                                <TButton color="gray" onClick={() => navigate("/admin/appointments")}>Mégse</TButton>
+                                <TButton color="green">Save</TButton>
+                                <TButton color="gray" onClick={() => navigate("/admin/appointments")}>Cancel</TButton>
                             </div>
 
                         </div>
-                    ) : 'Betöltés...'}
+                    ) : 'Loading...'}
                 </div>
             </form>
         </PageComponent>

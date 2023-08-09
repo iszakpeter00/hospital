@@ -10,6 +10,7 @@ export default function AdminCreateEmployee() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
     const { id } = useParams();
 
     const navigate = useNavigate();
@@ -39,9 +40,9 @@ export default function AdminCreateEmployee() {
             console.log(res);
             navigate("/admin/employees");
             if (id) {
-                showToast("Dolgozó sikeresen módosítva");
+                showToast("Employee edited successfully.");
             } else {
-                showToast("Dolgozó sikeresen hozzáadva");
+                showToast("Employee created successfully.");
             }
         }).catch((err) => {
             if (err && err.response) {
@@ -68,20 +69,26 @@ export default function AdminCreateEmployee() {
     }, []);
 
     return (
-        <PageComponent title={id ? "Dolgozó módosítása" : "Dolgozó hozzáadása"}>
+        <PageComponent title={id ? "Edit employee" : "Add employee"}>
             <form action="#" method="post" onSubmit={onSubmit} className="px-4 py-4">
+            {error &&
+                <div className="bg-red-100 border border-red-400 text-red-700 text-lg px-4 py-3 rounded relative" role="alert">
+                    {error}
+                </div>
+            }
                 {!loading ? (
-                    <div className="shadow sm:overflow-hidden sm:rounded-md">
+
+                    <div className="mt-5 shadow sm:overflow-hidden sm:rounded-md">
 
                         <div className="px-4 py-4 bg-white space-y-6 sm:p-6">
 
-                            {/*Név*/}
+                            {/*Name*/}
                             <div className="col-span-6 sm:col-span-3 space-y-3">
                                 <label
                                     htmlFor="title"
                                     className="block text-sm font-bold text-gray-700"
                                 >
-                                    Név
+                                    Name
                                 </label>
                                 <input
                                     type="text"
@@ -94,15 +101,15 @@ export default function AdminCreateEmployee() {
                                     required
                                 />
                             </div>
-                            {/*Név*/}
+                            {/*Name*/}
 
-                            {/*Név*/}
+                            {/*E-mail address*/}
                             <div className="col-span-6 sm:col-span-3 space-y-3">
                                 <label
                                     htmlFor="title"
                                     className="block text-sm font-bold text-gray-700"
                                 >
-                                    E-mail cím
+                                    E-mail address
                                 </label>
                                 <input
                                     type="email"
@@ -115,16 +122,17 @@ export default function AdminCreateEmployee() {
                                     required
                                 />
                             </div>
-                            {/*Név*/}
+                            {/*E-mail address*/}
+
                             <div className="flex gap-4 py-3">
-                                <TButton color="green">Mentés</TButton>
-                                <TButton color="gray" onClick={() => navigate("/admin/employees")}>Mégse</TButton>
+                                <TButton color="green">Save</TButton>
+                                <TButton color="gray" onClick={() => navigate("/admin/employees")}>Cancel</TButton>
                             </div>
 
                         </div>
 
                     </div>
-                ) : "Betöltés..."}
+                ) : "Loading..."}
             </form>
         </PageComponent>
     )

@@ -43,7 +43,7 @@ export default function AdminEmployees() {
         axiosClient.delete(`/employee/${id}`)
             .then(() => {
                 setDeleteConfirm(false);
-                showToast("Dolgozó sikeresen törölve");
+                showToast("Employee deleted successfully.");
                 getEmployees();
             })
     }
@@ -55,17 +55,17 @@ export default function AdminEmployees() {
     return (
         <div>
             <PageComponent
-                title="Dolgozók"
+                title="Employees"
                 buttons={(
                     <TButton color="green" to="/admin/employees/create">
                         <PlusCircleIcon className="h-6 w-6 mr-2" />
-                        Dolgozó hozzáadása
+                        Add new employee
                     </TButton>
                 )}>
 
                 {deleteConfirm &&
                     <DeleteConfirm
-                        title="Biztosan törölni szeretné a dolgozót?"
+                        title="Are you sure you want to delete the employee?"
                         onDelete={() => onDelete(employeeId)}
                         onCancel={() => setDeleteConfirm(false)}
                     />
@@ -77,10 +77,10 @@ export default function AdminEmployees() {
                             <thead className="text-s uppercase bg-gray-50 dark:bg-gray-500 dark:text-white">
                                 <tr>
                                     <th scope="col" className="px-6 py-3">
-                                        Név
+                                        Name
                                     </th>
                                     <th scope="col" className="px-6 py-3">
-                                        E-mail cím
+                                        E-mail address
                                     </th>
                                     <th scope="col" className="px-6 py-3">
 
@@ -102,7 +102,7 @@ export default function AdminEmployees() {
                                                 to={`/admin/employees/${employee.id}`}
                                             >
                                                 <PencilSquareIcon className="h-6 w-6 mr-2" />
-                                                Szerkesztés
+                                                Edit
                                             </TButton>
                                             <TButton
                                                 color="delete"
@@ -113,7 +113,7 @@ export default function AdminEmployees() {
                                                 }
                                             >
                                                 <XCircleIcon className="h-6 w-6 mr-2" />
-                                                Törlés
+                                                Delete
                                             </TButton>
                                         </td>
                                     </tr>
@@ -122,7 +122,7 @@ export default function AdminEmployees() {
                             </tbody>
                         </table>
                     </div>
-                ) : (loading ? 'Betöltés...' : 'Nincs dolgozó az adatbázisban.')
+                ) : (loading ? 'Loading...' : 'There are no employees in the database.')
                 }
 
             </PageComponent>

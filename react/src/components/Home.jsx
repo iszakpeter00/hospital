@@ -8,8 +8,8 @@ const Home = () => {
         <div className='container'>
             <div className='home' id='home'>
                 <div className='content'>
-                    <h1>Egészségügyi</h1>
-                    <h2 className='font-bold'>központ</h2>
+                    <h1>Healthcare</h1>
+                    <h2 className='font-bold'>centre</h2>
                 </div>
             </div>
             <Link to='about' smooth={true} duration={700} offset={20} className='triangle'>

@@ -43,7 +43,7 @@ export default function AdminServices() {
         axiosClient.delete(`/service/${id}`)
             .then(() => {
                 setDeleteConfirm(false);
-                showToast("Szolgáltatás sikeresen törölve");
+                showToast("Service deleted successfully.");
                 getServices();
             })
     }
@@ -55,17 +55,17 @@ export default function AdminServices() {
     return (
         <div>
             <PageComponent
-                title="Szolgáltatások"
+                title="Services"
                 buttons={(
                     <TButton color="green" to="/admin/services/create">
                         <PlusCircleIcon className="h-6 w-6 mr-2" />
-                        Szolgáltatás hozzáadása
+                        Add new service
                     </TButton>
                 )}>
 
                 { deleteConfirm &&
                     <DeleteConfirm
-                        title="Biztosan törölni szeretné a szolgáltatást?"
+                        title="Are you sure you want to delete the service?"
                         onDelete={() => onDelete(serviceId)}
                         onCancel={() => setDeleteConfirm(false)}
                     />
@@ -77,13 +77,13 @@ export default function AdminServices() {
                             <thead className="text-s uppercase bg-gray-50 dark:bg-gray-500 dark:text-white">
                                 <tr>
                                     <th scope="col" className="px-6 py-3">
-                                        Név
+                                        Name
                                     </th>
                                     <th scope="col" className="px-6 py-3">
-                                        Hossz
+                                        Duration
                                     </th>
                                     <th scope="col" className="px-6 py-3">
-                                        Ár
+                                        Price
                                     </th>
                                     <th scope="col" className="px-6 py-3">
 
@@ -97,10 +97,10 @@ export default function AdminServices() {
                                             {service.name}
                                         </td>
                                         <td className="px-6 py-4">
-                                            {service.length} perc
+                                            {service.length} min.
                                         </td>
                                         <td className="px-6 py-4">
-                                            {service.price} Ft
+                                            {service.price} $
                                         </td>
                                         <td className="flex flex-row gap-2 px-6 py-4 justify-center">
                                             <TButton
@@ -108,7 +108,7 @@ export default function AdminServices() {
                                                 to={`/admin/services/${service.id}`}
                                             >
                                                 <PencilSquareIcon className="h-6 w-6 mr-2" />
-                                                Szerkesztés
+                                                Edit
                                             </TButton>
                                             <TButton
                                                 color="delete"
@@ -119,7 +119,7 @@ export default function AdminServices() {
                                                 }
                                             >
                                                 <XCircleIcon className="h-6 w-6 mr-2" />
-                                                Törlés
+                                                Delete
                                             </TButton>
                                         </td>
                                     </tr>
@@ -128,7 +128,7 @@ export default function AdminServices() {
                             </tbody>
                         </table>
                     </div>
-                ) : (loading ? 'Betöltés...' : 'Nincs szolgáltatás az adatbázisban.')
+                ) : (loading ? 'Loading...' : 'There is no service in the database.')
                 }
 
             </PageComponent>

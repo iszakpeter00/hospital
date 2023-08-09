@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EmployeeRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
@@ -35,9 +36,9 @@ class EmployeeController extends Controller
      * @param  \App\Http\Requests\EmployeeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) //EmployeeRequest
+    public function store(EmployeeRequest $request) //EmployeeRequest
     {
-        $data = $request->all();    //ha megvan a EmployeeRequest, akkor a validated() metódussal kell
+        $data = $request->validated();    //ha megvan a EmployeeRequest, akkor a validated() metódussal kell
         Employee::create($data);
     }
 
